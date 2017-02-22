@@ -7,12 +7,12 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <link rel="icon" href="{{url('/webimg/knights-logo.png')}}">
     <title>{{ config('app.name', 'Knights of Columbus') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/custom.css') }}?3" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -36,9 +36,9 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                    Knights of Columbus
-                     </a>
+                    <a class="navbar-brand" href="{{ url('/') }}"><img class="navimg" src="{{url('webimg/text-logo.png')}}"></a>
+                    
+                     
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
