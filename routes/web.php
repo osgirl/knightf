@@ -25,3 +25,4 @@
 // My Routes
 Auth::routes();
 Route::resource('/', 'HomeController');
+Route::resource('event','EventController');
