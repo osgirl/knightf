@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
-use App\Event;
 
-class EventController extends Controller
+use Illuminate\Http\Request;
+use App\Landing;
+
+class LandingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +14,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::get();
-        return view('event.index', compact('events'));
+        //
     }
 
     /**
@@ -24,7 +24,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        return view('event.create');
+        return view('landing.create');
     }
 
     /**
@@ -35,18 +35,18 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-      $this->validate($request,[
+
+
+         $this->validate($request,[
          'title' => 'required',
-         'start_date' => 'required',
          'body' => 'required',
         ]);
       
-        $event = new Event;
-        $event->fill($request->all());
-        $event->save();
-        return redirect('/event');
+        $landing = new Landing;
+        $landing->fill($request->all());
+        $landing->save();
+        return redirect('/');
     }
-    
 
     /**
      * Display the specified resource.
@@ -56,8 +56,7 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        $event=Event::findOrFail($id);
-        return view('event.show', compact('event'));
+        //
     }
 
     /**
@@ -68,7 +67,8 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        //
+        $landing = Landing::findOrFail($id);
+        return view('landing.edit',compact('landing'));
     }
 
     /**
@@ -79,8 +79,18 @@ class EventController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    {        
+
+         $this->validate($request,[
+         'title' => 'required',
+         'body' => 'required',
+        ]);
+      
+        $landing = Landing::findOrFail($id);
+        $landing->fill($request->all());
+
+        $landing->save();
+        return redirect('/');
     }
 
     /**

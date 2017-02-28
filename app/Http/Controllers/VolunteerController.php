@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
-use App\Event;
 
-class EventController extends Controller
+use Illuminate\Http\Request;
+use App\Volunteer;
+
+class VolunteerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +14,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::get();
-        return view('event.index', compact('events'));
+        
     }
 
     /**
@@ -24,7 +24,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        return view('event.create');
+        return view('volunteer.create');
     }
 
     /**
@@ -35,18 +35,11 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-      $this->validate($request,[
-         'title' => 'required',
-         'start_date' => 'required',
-         'body' => 'required',
-        ]);
-      
-        $event = new Event;
-        $event->fill($request->all());
-        $event->save();
-        return redirect('/event');
+        $volunteer = new Volunteer;
+        $volunteer->fill($request->all());
+        $volunteer->save();
+        return redirect('/event/'.$volunteer->event_id);
     }
-    
 
     /**
      * Display the specified resource.
@@ -56,8 +49,7 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        $event=Event::findOrFail($id);
-        return view('event.show', compact('event'));
+        //
     }
 
     /**

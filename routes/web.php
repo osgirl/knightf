@@ -26,3 +26,7 @@
 Auth::routes();
 Route::resource('/', 'HomeController');
 Route::resource('event','EventController');
+Route::resource('volunteer','VolunteerController');
+Route::resource('landing','LandingController');
+// Route::resource('event/{id}/volunteer', 'volunteerController');
+

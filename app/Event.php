@@ -11,4 +11,8 @@ class Event extends Model
    			'start_date',
             'body'
         ];
+
+    public function volunteers(){
+        return $this->hasMany('App\Volunteer');
+    }
 }
