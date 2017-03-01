@@ -8,7 +8,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading box">{{$landing->title}}</div>
                 <div class="panel-body">
-                    {!!$landing->body!!}
+                    {!!$landing->body!!}!!
                 </div>
             </div>
         </div>
